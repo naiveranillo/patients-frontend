@@ -1,0 +1,75 @@
+<h1>{{ patientId ? 'Editar paciente' : 'Crear paciente' }}</h1>
+
+<form [formGroup]="patientForm" (ngSubmit)="saveForm()" class="flex flex-column gap-3 mt-5" style="max-width: 50rem;">
+    <div class="flex flex-row gap-3">
+        <div class="flex flex-column gap-2">
+            <label for="document">Tipo de documento</label>
+            <p-dropdown [options]="documentTypes" formControlName="documentType" optionLabel="name" optionValue="code"
+                placeholder="Tipo de documento" styleClass="w-100"></p-dropdown>
+            <ng-container *ngIf="patientForm.get('documentType')?.dirty && patientForm.get('documentType')?.invalid">
+                <small class="p-error">El tipo de documento es obligatorio.</small>
+            </ng-container>
+            <small class="p-error" *ngIf="errors['DocumentType']">{{ errors['DocumentType'][0] }}</small>
+        </div>
+        <div class="flex flex-column gap-2">
+            <label for="document">Documento</label>
+            <p-inputNumber mode="decimal" formControlName="documentNumber" placeholder="Digite el documento"
+                inputId="document" [useGrouping]="false"> </p-inputNumber>
+            <ng-container *ngIf="patientForm.get('documentNumber')?.dirty && patientForm.get('documentNumber')?.invalid">
+                <small class="p-error">El número de documento es obligatorio.</small>
+            </ng-container>
+            <small class="p-error" *ngIf="errors['DocumentNumber']">{{ errors['DocumentNumber'][0] }}</small>
+        </div>
+    </div>
+
+    <div class="flex flex-row gap-3">
+        <div class="flex flex-column gap-2">
+            <label for="document">Nombre</label>
+            <input type="text" formControlName="firstName" pInputText placeholder="Digite su nombre" />
+            <ng-container *ngIf="patientForm.get('firstName')?.dirty && patientForm.get('firstName')?.invalid">
+                <small class="p-error">El nombre es obligatorio.</small>
+            </ng-container>
+            <small class="p-error" *ngIf="errors['FirstName']">{{ errors['FirstName'][0] }}</small>
+        </div>
+        <div class="flex flex-column gap-2">
+            <label for="document">Apellido</label>
+            <input type="text" pInputText formControlName="lastName" placeholder="Digite su apellido" />
+            <ng-container *ngIf="patientForm.get('lastName')?.dirty && patientForm.get('lastName')?.invalid">
+                <small class="p-error">El apellido es obligatorio.</small>
+            </ng-container>
+            <small class="p-error" *ngIf="errors['LastName']">{{ errors['LastName'][0] }}</small>
+        </div>
+    </div>
+
+    <div class="flex flex-row gap-3">
+        <div class="flex flex-column gap-2">
+            <label for="document">Fecha de nacimiento</label>
+            <p-calendar formControlName="birthDate" placeholder="Fecha de nacimiento"></p-calendar>
+            <ng-container *ngIf="patientForm.get('birthDate')?.dirty && patientForm.get('birthDate')?.invalid">
+                <small class="p-error">La fecha de nacimiento es obligatoria.</small>
+            </ng-container>
+            <small class="p-error" *ngIf="errors['BirthDate']">{{ errors['BirthDate'][0] }}</small>
+        </div>
+        <div class="flex flex-column gap-2">
+            <label for="phone">Número de Celular</label>
+            <p-inputNumber formControlName="phoneNumber" mode="decimal" placeholder="Digite su celular" inputId="phone"
+                [useGrouping]="false">
+            </p-inputNumber>
+            <small class="p-error" *ngIf="errors['PhoneNumber']">{{ errors['PhoneNumber'][0] }}</small>
+        </div>
+    </div>
+
+    <div class="flex flex-row gap-3 mb-5">
+        <div class="flex flex-column gap-2">
+            <label for="document">Correo Electrónico</label>
+            <input type="email" formControlName="email" pInputText placeholder="Digite su correo electrónico" />
+            <small class="p-error" *ngIf="errors['Email']">{{ errors['Email'][0] }}</small>
+        </div>
+    </div>
+
+    <div class="flex flex-row gap-3">
+        <p-button routerLink="/app/list" [disabled]="loadingButton" type="button" label="Atrás" styleClass="p-button-outlined"
+            icon="pi pi-chevron-left"></p-button>
+        <p-button type="submit" [disabled]="disabledButton" [loading]="loadingButton" [label]="patientId ? 'Actualizar' : 'Guardar'" styleClass="p-button" icon="pi pi-plus"></p-button>
+    </div>
+</form>

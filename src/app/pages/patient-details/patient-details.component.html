@@ -1,0 +1,67 @@
+<div class="card mb-4" style="margin-top: 28px;">
+    <p-fieldset>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center text-primary p-2">
+                <span class="pi pi-user mr-2"></span>
+                <span class="font-bold text-lg">Detalles del paciente</span>
+            </div>
+        </ng-template>
+        <form [formGroup]="patientForm" class="flex flex-row flex-wrap gap-3">
+            <div class="flex flex-column gap">
+                <label for="document">Tipo de documento</label>
+                <input formControlName="documentType" type="text" pInputText readonly />
+            </div>
+            <div class="flex flex-column gap">
+                <label for="document">Número de documento</label>
+                <input formControlName="documentNumber" type="text" pInputText readonly />
+            </div>
+            <div class="flex flex-column gap">
+                <label for="document">Nombre</label>
+                <input formControlName="firstName" type="text" pInputText readonly />
+            </div>
+            <div class="flex flex-column gap">
+                <label for="document">Apellido</label>
+                <input formControlName="lastName" type="text" pInputText readonly />
+            </div>
+            <div class="flex flex-column gap">
+                <label for="document">Número de celular</label>
+                <input formControlName="phoneNumber" type="text" pInputText readonly />
+            </div>
+            <div class="flex flex-column gap">
+                <label for="document">Correo Electrónico</label>
+                <input formControlName="email" type="text" pInputText readonly />
+            </div>
+            <div class="flex flex-column gap">
+                <label for="document">Fecha de creación</label>
+                <input formControlName="birthDate" type="text" pInputText readonly />
+            </div>
+        </form>
+    </p-fieldset>
+</div>
+
+<h2 class="mb-3">Lista de citas</h2>
+
+<p-table [value]="listAppointments" [scrollable]="true" scrollHeight="400px" styleClass="p-datatable-sm"
+    [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombre del médico</th>
+            <th>Nombre del paciente</th>
+            <th>Fecha y hora</th>
+            <th>Consultorio</th>
+            <th>Estado actual</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-appointments>
+        <tr>
+            <td>{{appointments.nombreMedico}}</td>
+            <td>{{appointments.nombrePaciente}}</td>
+            <td>{{appointments.fechaHora | date: 'dd/MM/yyyy'}}</td>
+            <td>{{appointments.consultorio}}</td>
+            <td>{{appointments.estado}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-button routerLink="/app/list" class="mt-4" type="button" label="Atrás" styleClass="p-button-outlined"
+            icon="pi pi-chevron-left"></p-button>

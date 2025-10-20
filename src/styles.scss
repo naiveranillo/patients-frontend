@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeflex/primeflex.css";
+@import 'ngx-toastr/toastr';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Montserrat", sans-serif, "Helvetica Neue"; }
+
+:root{
+    --background: #effcff;
+    --text-title: #2768d2;
+    --color-black: #707a85;
+    --color-primary: #3B82F6
+    --color-remove: #f43030;
+}
+
+h1{
+    color: var(--text-title);
+    font-size: 25px;
+}
+
+h2{
+    color: var(--text-title);
+    font-size: 20px;
+}
+
+.p-dropdown{
+    min-width: 15rem !important;
+}
