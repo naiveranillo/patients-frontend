@@ -1,27 +1,39 @@
 # PatientsFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Frontend en Angular 16 para la gestión de pacientes, con vistas para crear, editar, ver detalles y listar pacientes con filtros y paginación.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Requisitos
 
-## Code scaffolding
+- Node.js 18.0.0
+- Angular 16.2.16
+- PrimeNG 16.4.4
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**1. Clonar el repositorio**
+  - git clone https://github.com/naiveranillo/patients-frontend.git
 
-## Build
+**2. Instalar dependecias**
+  - npm install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+**3. Ejecutar la aplicación**
+  - ng serve
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Revisar que la URL del backend esté correctamente configurada en los servicios.
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**Estructura**
+- pages/: Vistas principales (lista, formulario, detalle).
+- services/: Servicios por recurso con HttpClient.
+- providers/: Proveedores globales como interceptores.
+- interfaces/: Definición de tipos y modelos.
+- utils/: Funciones y utilidades compartidas.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Funcionalidades**
+- Listado de pacientes con filtros y paginación.
+- Formularios reactivos para crear y editar pacientes, con validaciones desde el backend y frontend.
+- Vista de detalle de pacientes.
+- Manejo global de errores usando un interceptor y ngx-toastr.
+- Uso de componentes y funcionalidades de PrimeNG para la UI.
